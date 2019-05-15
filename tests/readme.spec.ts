@@ -1,6 +1,7 @@
 import parseReadme from '../src';
 
 describe('readme', () => {
+	describe('basic parsing', () => {
     test('should parse basic', () => {
 			expect(parseReadme("# hi")).toEqual(`<h1 id=\"hi\">hi</h1>`);
 		});
@@ -13,4 +14,20 @@ describe('readme', () => {
 			expect(parseReadme("[Local Storage](javascript:alert(JSON.stringify(localStorage)))"))
 				.toEqual("<p>Local Storage</p>");
 		});
+
+		test('should parse basic / case insensitive', () => {
+			expect(parseReadme("[CaseInsensitive](JaVaScRiPt:alert('CaseInsensitive'))"))
+				.toEqual("<p>CaseInsensitive</p>");
+		});
+
+		test('should parse basic / url', () => {
+			expect(parseReadme("[URL](javascript://www.google.com%0Aalert('URL'))"))
+				.toEqual("<p>URL</p>");
+		});
+
+		test('should parse basic / in quotes', () => {
+			expect(parseReadme("[In Quotes]('javascript:alert(\"InQuotes\")')"))
+				.toEqual("<p>In Quotes</p>");
+		});
+	});
 });
