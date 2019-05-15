@@ -36,4 +36,18 @@ describe('readme', () => {
       expect(parseReadme('![Escape SRC - onerror]("onerror="alert(\'ImageOnError\'))')).toEqual('<p><img src="%22onerror=%22alert(\'ImageOnError\')" alt="Escape SRC - onerror"></p>');
     });
   });
+
+  describe('should test fuzzing', () => {
+    test('xss / document cookie', () => {
+      expect(parseReadme('[XSS](javascript:prompt(document.cookie))')).toEqual('<p>XSS</p>');
+    });
+
+    test('xss / white space cookie', () => {
+      expect(parseReadme('[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))')).toEqual('<p>[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))</p>');
+    });
+
+    test('xss / white space cookie', () => {
+      expect(parseReadme('[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)')).toEqual('<p>XSS</p>');
+    });
+  });
 });
