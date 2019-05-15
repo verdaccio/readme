@@ -75,7 +75,7 @@ jobs:
       - save_cache:
           key: *repo_key
           paths:
-            - ~/local-storage
+            - ~/readme-verdaccio
 
   test_node11:
     <<: *defaults
