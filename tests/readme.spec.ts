@@ -31,5 +31,9 @@ describe('readme', () => {
     test('should parse basic / in quotes', () => {
       expect(parseReadme('![Escape SRC - onload](https://www.example.com/image.png"onload="alert(\'ImageOnLoad\'))')).toEqual('<p><img src="https://www.example.com/image.png%22onload=%22alert(\'ImageOnLoad\')" alt="Escape SRC - onload"></p>');
     });
+
+    test('should parse basic / in quotes', () => {
+      expect(parseReadme('![Escape SRC - onload](https://www.example.com/image.png"onload="alert(\'ImageOnLoad\'))')).toEqual('<p><img src="https://www.example.com/image.png%22onload=%22alert(\'ImageOnLoad\')" alt="Escape SRC - onload"></p>');
+    });
   });
 });
