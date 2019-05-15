@@ -1,7 +1,7 @@
 {
   "name": "@verdaccio/readme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Readme markdown parser",
   "author": {
     "name": "Juan Picado",
     "email": "juanpicado19@gmail.com"
@@ -55,6 +55,6 @@
       "git add"
     ]
   },
-  "keywords": [],
+  "keywords": ["verdaccio", "readme", "markdown"],
   "license": "MIT"
 }
