@@ -27,13 +27,13 @@ describe('readme', () => {
     });
   });
 
-  describe('images', () => {
-    test('should parse basic / in quotes', () => {
+  describe('should parse images', () => {
+    test('in quotes', () => {
       expect(parseReadme('![Escape SRC - onload](https://www.example.com/image.png"onload="alert(\'ImageOnLoad\'))')).toEqual('<p><img src="https://www.example.com/image.png%22onload=%22alert(\'ImageOnLoad\')" alt="Escape SRC - onload"></p>');
     });
 
-    test('should parse basic / in quotes', () => {
-      expect(parseReadme('![Escape SRC - onload](https://www.example.com/image.png"onload="alert(\'ImageOnLoad\'))')).toEqual('<p><img src="https://www.example.com/image.png%22onload=%22alert(\'ImageOnLoad\')" alt="Escape SRC - onload"></p>');
+    test('in image error', () => {
+      expect(parseReadme('![Escape SRC - onerror]("onerror="alert(\'ImageOnError\'))')).toEqual('<p><img src="%22onerror=%22alert(\'ImageOnError\')" alt="Escape SRC - onerror"></p>');
     });
   });
 });
