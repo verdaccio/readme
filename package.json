@@ -6,7 +6,7 @@
     "name": "Juan Picado",
     "email": "juanpicado19@gmail.com"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "release": "standard-version -a -s",
     "pretest": "npm run lint",
