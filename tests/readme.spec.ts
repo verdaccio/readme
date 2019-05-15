@@ -21,6 +21,14 @@ function clean(text: string) {
 }
 
 describe('readme', () => {
+  test('should handle empty readme', () => {
+    expect(parseReadme('')).toBeUndefined();
+  });
+
+  test('should handle single string readme', () => {
+    expect(parseReadme('this is a readme')).toEqual('<p>this is a readme</p>');
+  });
+
   test('should handle wrong text', () => {
     expect(parseReadme(undefined)).toBeUndefined();
   });
