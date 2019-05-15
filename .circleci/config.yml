@@ -136,7 +136,7 @@ jobs:
           key: *base_config_key
       - run:
           name: Publish
-          command: yarn publish
+          command: yarn publish --access public
 
 workflows:
   version: 2
